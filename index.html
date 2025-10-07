@@ -1,17 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script
+        src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    
-    <div id="wrapper">
-        
-    </div>
 
+<body>
+
+    <div class="unicorn-embed" data-us-project="MSft8uYsb5EatD4L14Wc" data-us-scale="1" data-us-dpi="1.5"
+        data-us-lazyload="true" data-us-alttext="Welcome to Unicorn Studio"
+        data-us-arialabel="This is a canvas scene">
+    </div>
+    <div id="wrapper"></div>
+
+
+    <script>
+         // Wait for DOM to be ready before initializing UnicornStudio
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.UnicornStudio && typeof UnicornStudio.init === "function") {
+        UnicornStudio.init()
+          .then((scenes) => {
+            // Scenes are ready
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      } else {
+        console.error("UnicornStudio library not loaded.");
+      }
+    });
+    </script>
 
     <script src="script.js"></script>
 </body>
+
 </html>
