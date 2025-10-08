@@ -2,26 +2,41 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script
-        src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js"></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="unicorn-embed" data-us-project="MSft8uYsb5EatD4L14Wc" data-us-scale="1" data-us-dpi="1.5"
-        data-us-lazyload="true" data-us-alttext="Welcome to Unicorn Studio"
-        data-us-arialabel="This is a canvas scene">
-    </div>
-    <div id="wrapper"></div>
+  <!-- <div class="unicorn-embed" data-us-project="MSft8uYsb5EatD4L14Wc" data-us-scale="1" data-us-dpi="1.5"
+    data-us-lazyload="true" data-us-alttext="Welcome to Unicorn Studio" data-us-arialabel="This is a canvas scene">
+  </div> -->
+  <div id="wrapper">
+    <header>
+      <h2>Pokemon World</h2>
+      <div id="selection">
+        <select name="" id="types">
+          <option value="" selected disabled>Filter By Type</option>
+        </select>
+        <input type="text" id="searchByName" placeholder="Search Pokemons by name...">
+      </div>
+    </header>
+    <main></main>
+    <footer>Load More</footer>
+  </div>
 
 
-    <script>
-         // Wait for DOM to be ready before initializing UnicornStudio
-    document.addEventListener("DOMContentLoaded", function() {
+
+  
+  
+
+  <script src="script.js"></script>
+  <script>
+    // Wait for DOM to be ready before initializing UnicornStudio
+    document.addEventListener("DOMContentLoaded", function () {
       if (window.UnicornStudio && typeof UnicornStudio.init === "function") {
         UnicornStudio.init()
           .then((scenes) => {
@@ -34,9 +49,6 @@
         console.error("UnicornStudio library not loaded.");
       }
     });
-    </script>
-
-    <script src="script.js"></script>
+  </script>
 </body>
-
 </html>
