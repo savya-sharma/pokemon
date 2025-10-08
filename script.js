@@ -39,7 +39,7 @@ function displayData(arr) {
         card.classList.add("card")
         let heading = document.createElement("h3")
         heading.textContent = arr[i].name
-        
+
         let image = arr[i].sprites.other.dream_world.front_default;
         let imageDiv = document.createElement("div")
         imageDiv.classList.add("img-div")
@@ -49,6 +49,37 @@ function displayData(arr) {
         card.append(imageDiv)
         main.append(card)
         card.append(heading);
+
+        // GSAP animation: fade in and scale up the card
+        // Initial GSAP animation: fade in and scale up the card
+        gsap.from(card, {
+            opacity: 0,
+            scale: 0.8,
+            duration: 0.6,
+            ease: "power2.out"
+        });
+
+        // Add hover animation using mouseenter and mouseleave
+        card.addEventListener("mouseenter", () => {
+            gsap.to(card, {
+                scale: 1.04,
+                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(255, 255, 255, 0.08) inset",
+                background: "linear-gradient(135deg, #fff 0%, #111 100%)",
+                duration: 0.35,
+                overwrite: "auto"
+            });
+        });
+
+        card.addEventListener("mouseleave", () => {
+            gsap.to(card, {
+                scale: 1,
+                boxShadow: "0 4px 18px rgba(0, 0, 0, 0.25), 0 1.5px 4px rgba(255, 255, 255, 0.05) inset",
+                background: "linear-gradient(180deg, #323232 0%, #888 100%)",
+                duration: 0.35,
+                overwrite: "auto"
+            });
+        });
+
     }
 }
 
@@ -83,8 +114,8 @@ loadMoreBtn.addEventListener("click", () => {
 
 bySearch.addEventListener("keyup", (e) => {
     const searchvalue = e.target.value.toLowerCase();
-    const filteredData = finalData.filter(pokemon => 
-        pokemon.name.toLowerCase().includes(searchvalue)   
+    const filteredData = finalData.filter(pokemon =>
+        pokemon.name.toLowerCase().includes(searchvalue)
     )
     main.innerHTML = ""
     displayData(filteredData)
