@@ -27,15 +27,54 @@ body {
     z-index: 0;
 }
 
+@media (max-width: 700px) {
+    #selection {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 8px;
+        max-width: 98vw;
+    }
+
+    #selection h2 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    #selection select,
+    #selection input {
+        width: 100%;
+        min-width: 0;
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+    }
+}
+
+#selection input[type="text"] {
+    width: 260px;
+    max-width: 100%;
+    transition: box-shadow 0.2s, border 0.2s;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #222;
+}
+
+#selection input[type="text"]:focus {
+    outline: none;
+    border-color: #888;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+
 #selection {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;  
+    gap: 20px;
     padding: 20px 32px;
     background: rgba(255, 255, 255, 0.85);
     border-radius: 10px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(12px);
     margin: 32px auto 0 auto;
     max-width: 900px;
@@ -50,18 +89,19 @@ body {
     background: #fff;
     outline: none;
     transition: border-color 0.2s;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
     cursor: pointer;
 }
+
 #selection select:focus {
     border-color: #888;
 }
 
-#selection input{
- padding: 1rem 3rem;   
- border-radius: 4px;
- font-size: 1rem;
- border: none;
+#selection input {
+    padding: 1rem 3rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    border: none;
 }
 
 #wrapper {
