@@ -42,16 +42,19 @@ body {
 #wrapper{
     position: relative;
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.221);
+    background-color: rgba(0, 0, 0, 0.07);
     backdrop-filter: blur(3px);
+    overflow-y: hidden;
+    
 }
 
+
 main {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10vw;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10vw;
 }
 
 .card {
@@ -77,13 +80,16 @@ main {
     object-fit: cover;
 }
 
-/* .img-div {
-    width: 100%;
-    height: auto;
-    max-height: 180px;
-    object-fit: contain;
-    display: block;
-    margin-top: 24px;
-    margin-bottom: 16px;
-    border-radius: 12px;
-}  */
+ button {
+    position: absolute;
+    bottom: 1vw;
+    right: 1vw;
+    /* rotate: 90deg; */
+    
+    padding: 1rem 3rem;
+    color: white;
+    font-size: 1rem;
+    border-radius: 4px;
+    background: linear-gradient(180deg, #323232 0%, #888 100%);
+    cursor: pointer;
+}

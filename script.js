@@ -3,6 +3,8 @@ const wrapper = document.querySelector("#wrapper")
 const loadMoreBtn = document.querySelector("button")
 const bySearch = document.querySelector("#searchByName")
 let url = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0"
+let categoryUrl = "https://pokeapi.co/api/v2/type/?limit=21"
+let typesSelect = document.getElementById("types");
 let promises = [];
 let finalData = [];
 let offset = 0;
@@ -30,24 +32,35 @@ window.addEventListener("load", async () => {
 
 
     displayData(finalData);
+    // morePokemonFetch(finalData);
+    displayTypes(finalData);
+    filterPokemons(fetchUrl(categoryUrl))
 })
+
+async function displayTypes(arr) {
+    let pokemonTypes = [];
+    for (let i = 0; i < arr.length; i++) {
+        pokemonTypes.push(arr[i].types[0].type.name)
+        console.log(pokemonTypes)
+    }
+}
 
 
 function displayData(arr) {
     for (let i = 0; i < arr.length; i++) {
-        let card = document.createElement("div")
-        card.classList.add("card")
-        let heading = document.createElement("h3")
-        heading.textContent = arr[i].name
+        let card = document.createElement("div");
+        card.classList.add("card");
+        let heading = document.createElement("h3");
+        heading.textContent = arr[i].name;
 
         let image = arr[i].sprites.other.dream_world.front_default;
-        let imageDiv = document.createElement("div")
-        imageDiv.classList.add("img-div")
-        let img = document.createElement("img")
-        img.src = image
-        imageDiv.append(img)
-        card.append(imageDiv)
-        main.append(card)
+        let imageDiv = document.createElement("div");
+        imageDiv.classList.add("img-div");
+        let img = document.createElement("img");
+        img.src = image;
+        imageDiv.append(img);
+        card.append(imageDiv);
+        main.append(card);
         card.append(heading);
 
         // GSAP animation: fade in and scale up the card
@@ -124,7 +137,39 @@ bySearch.addEventListener("keyup", (e) => {
 
 
 
+async function filterPokemons() {
+    let filterResponse = await fetch(categoryUrl)
+    let filterResult = await filterResponse.json();
+    let categories = [];
+    for (let i = 0; i < filterResult.results.length; i++) {
+        let option = document.createElement("option")
+        let categoryName = filterResult.results[i].name
+        categories.push(categoryName);
+        option.textContent = categoryName;
+        option.value = categoryName;
+        typesSelect.appendChild(option)
 
+    }
+
+    typesSelect.addEventListener("change", function (e) {
+        let selectedType = e.target.value;
+        main.innerHTML = "";
+        if (selectedType === 'all') {
+            displayData(finalData);
+        } else {
+            const filteredByType = finalData.filter(pokemon =>
+                pokemon.types && pokemon.types.some(typeObj => typeObj.type.name === selectedType)
+            );
+            if (filteredByType.length === 0) {
+                main.innerHTML = '<div class="error-404" style="color:white">Error: No Pokemon found fot this categoty.</div>';
+            } else {
+                displayData(filteredByType)
+            }
+            // main.innerHTML = "";
+            // displayData(filteredByType);
+        }
+    });
+}
 
 
 
