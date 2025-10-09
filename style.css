@@ -27,34 +27,59 @@ body {
     z-index: 0;
 }
 
-#selection{
+#selection {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 16px;
-    padding: 24px 0;
-    background: #f5f5f5a7;
-    /* backdrop-filter: blur(20px); */
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    gap: 20px;
+    padding: 20px 32px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    backdrop-filter: blur(12px);
+    margin: 32px auto 0 auto;
+    max-width: 900px;
 }
 
-#wrapper{
+#selection select {
+    padding: 0.75rem 2rem;
+    color: #222;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    cursor: pointer;
+}
+#selection select:focus {
+    border-color: #888;
+}
+
+#selection input{
+ padding: 1rem 3rem;   
+ border-radius: 4px;
+ font-size: 1rem;
+ border: none;
+}
+
+#wrapper {
     position: relative;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.07);
     backdrop-filter: blur(3px);
     overflow-y: hidden;
-    
+
 }
 
 
 main {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        margin-top: 10vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vw;
 }
 
 .card {
@@ -80,12 +105,12 @@ main {
     object-fit: cover;
 }
 
- button {
+button {
     position: absolute;
     bottom: 1vw;
     right: 1vw;
     /* rotate: 90deg; */
-    
+
     padding: 1rem 3rem;
     color: white;
     font-size: 1rem;
